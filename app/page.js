@@ -3,292 +3,225 @@
 import { useState } from 'react'
 
 const ZODIAC_SIGNS = [
-  {
-    name: 'Aries',
-    dateRange: 'Mar 21 - Apr 19',
-    startMonth: 3,
-    startDay: 21,
-    endMonth: 4,
-    endDay: 19,
-    symbol: '♈',
-    description: 'Courageous, determined, confident, and passionate.',
-    element: 'Fire',
-    color: '#FF6B6B',
-  },
-  {
-    name: 'Taurus',
-    dateRange: 'Apr 20 - May 20',
-    startMonth: 4,
-    startDay: 20,
-    endMonth: 5,
-    endDay: 20,
-    symbol: '♉',
-    description: 'Reliable, practical, devoted, and sensible.',
-    element: 'Earth',
-    color: '#95D630',
-  },
-  {
-    name: 'Gemini',
-    dateRange: 'May 21 - Jun 20',
-    startMonth: 5,
-    startDay: 21,
-    endMonth: 6,
-    endDay: 20,
-    symbol: '♊',
-    description: 'Expressive, quick-witted, intelligent, and adaptable.',
-    element: 'Air',
-    color: '#FFD700',
-  },
-  {
-    name: 'Cancer',
-    dateRange: 'Jun 21 - Jul 22',
-    startMonth: 6,
-    startDay: 21,
-    endMonth: 7,
-    endDay: 22,
-    symbol: '♋',
-    description: 'Protective, intuitive, sensitive, and compassionate.',
-    element: 'Water',
-    color: '#87CEEB',
-  },
-  {
-    name: 'Leo',
-    dateRange: 'Jul 23 - Aug 22',
-    startMonth: 7,
-    startDay: 23,
-    endMonth: 8,
-    endDay: 22,
-    symbol: '♌',
-    description: 'Creative, generous, warm-hearted, and charismatic.',
-    element: 'Fire',
-    color: '#FF8C00',
-  },
-  {
-    name: 'Virgo',
-    dateRange: 'Aug 23 - Sep 22',
-    startMonth: 8,
-    startDay: 23,
-    endMonth: 9,
-    endDay: 22,
-    symbol: '♍',
-    description: 'Analytical, hardworking, practical, and loyal.',
-    element: 'Earth',
-    color: '#DAA520',
-  },
-  {
-    name: 'Libra',
-    dateRange: 'Sep 23 - Oct 22',
-    startMonth: 9,
-    startDay: 23,
-    endMonth: 10,
-    endDay: 22,
-    symbol: '♎',
-    description: 'Diplomatic, fair, social, and gracious.',
-    element: 'Air',
-    color: '#E6E6FA',
-  },
-  {
-    name: 'Scorpio',
-    dateRange: 'Oct 23 - Nov 21',
-    startMonth: 10,
-    startDay: 23,
-    endMonth: 11,
-    endDay: 21,
-    symbol: '♏',
-    description: 'Resourceful, powerful, mysterious, and determined.',
-    element: 'Water',
-    color: '#8B0000',
-  },
-  {
-    name: 'Sagittarius',
-    dateRange: 'Nov 22 - Dec 21',
-    startMonth: 11,
-    startDay: 22,
-    endMonth: 12,
-    endDay: 21,
-    symbol: '♐',
-    description: 'Optimistic, freedom-loving, honest, and adventurous.',
-    element: 'Fire',
-    color: '#9370DB',
-  },
-  {
-    name: 'Capricorn',
-    dateRange: 'Dec 22 - Jan 19',
-    startMonth: 12,
-    startDay: 22,
-    endMonth: 1,
-    endDay: 19,
-    symbol: '♑',
-    description: 'Responsible, disciplined, ambitious, and practical.',
-    element: 'Earth',
-    color: '#2F4F4F',
-  },
-  {
-    name: 'Aquarius',
-    dateRange: 'Jan 20 - Feb 18',
-    startMonth: 1,
-    startDay: 20,
-    endMonth: 2,
-    endDay: 18,
-    symbol: '♒',
-    description: 'Independent, intellectual, innovative, and humanitarian.',
-    element: 'Air',
-    color: '#4169E1',
-  },
-  {
-    name: 'Pisces',
-    dateRange: 'Feb 19 - Mar 20',
-    startMonth: 2,
-    startDay: 19,
-    endMonth: 3,
-    endDay: 20,
-    symbol: '♓',
-    description: 'Compassionate, artistic, intuitive, and gentle.',
-    element: 'Water',
-    color: '#20B2AA',
-  },
+  { name: 'Capricorn', dates: 'Dec 22 - Jan 19', emoji: '♑', color: 'from-gray-700 to-gray-900' },
+  { name: 'Aquarius', dates: 'Jan 20 - Feb 18', emoji: '♒', color: 'from-blue-400 to-blue-600' },
+  { name: 'Pisces', dates: 'Feb 19 - Mar 20', emoji: '♓', color: 'from-green-400 to-blue-500' },
+  { name: 'Aries', dates: 'Mar 21 - Apr 19', emoji: '♈', color: 'from-red-500 to-orange-500' },
+  { name: 'Taurus', dates: 'Apr 20 - May 20', emoji: '♉', color: 'from-green-600 to-green-800' },
+  { name: 'Gemini', dates: 'May 21 - Jun 20', emoji: '♊', color: 'from-yellow-400 to-yellow-600' },
+  { name: 'Cancer', dates: 'Jun 21 - Jul 22', emoji: '♋', color: 'from-orange-400 to-red-400' },
+  { name: 'Leo', dates: 'Jul 23 - Aug 22', emoji: '♌', color: 'from-yellow-500 to-orange-500' },
+  { name: 'Virgo', dates: 'Aug 23 - Sep 22', emoji: '♍', color: 'from-amber-600 to-yellow-600' },
+  { name: 'Libra', dates: 'Sep 23 - Oct 22', emoji: '♎', color: 'from-pink-400 to-rose-500' },
+  { name: 'Scorpio', dates: 'Oct 23 - Nov 21', emoji: '♏', color: 'from-purple-700 to-red-900' },
+  { name: 'Sagittarius', dates: 'Nov 22 - Dec 21', emoji: '♐', color: 'from-purple-500 to-indigo-600' },
 ]
 
-function getZodiacSign(date) {
-  const month = date.getMonth() + 1
-  const day = date.getDate()
+const ZODIAC_TRAITS = {
+  Capricorn: {
+    element: 'Earth',
+    ruling: 'Saturn',
+    traits: ['Disciplined', 'Responsible', 'Self-controlled', 'Good managers'],
+    lucky: ['Friday', 'Number 8', 'Color: Brown'],
+  },
+  Aquarius: {
+    element: 'Air',
+    ruling: 'Uranus',
+    traits: ['Independent', 'Intellectual', 'Humanitarian', 'Innovative'],
+    lucky: ['Saturday', 'Number 4', 'Color: Blue'],
+  },
+  Pisces: {
+    element: 'Water',
+    ruling: 'Neptune',
+    traits: ['Compassionate', 'Artistic', 'Intuitive', 'Gentle'],
+    lucky: ['Thursday', 'Number 7', 'Color: Sea Green'],
+  },
+  Aries: {
+    element: 'Fire',
+    ruling: 'Mars',
+    traits: ['Courageous', 'Determined', 'Confident', 'Enthusiastic'],
+    lucky: ['Tuesday', 'Number 9', 'Color: Red'],
+  },
+  Taurus: {
+    element: 'Earth',
+    ruling: 'Venus',
+    traits: ['Reliable', 'Practical', 'Devoted', 'Stable'],
+    lucky: ['Friday', 'Number 6', 'Color: Green'],
+  },
+  Gemini: {
+    element: 'Air',
+    ruling: 'Mercury',
+    traits: ['Adaptable', 'Outgoing', 'Intelligent', 'Curious'],
+    lucky: ['Wednesday', 'Number 5', 'Color: Yellow'],
+  },
+  Cancer: {
+    element: 'Water',
+    ruling: 'Moon',
+    traits: ['Protective', 'Intuitive', 'Sentimental', 'Persuasive'],
+    lucky: ['Monday', 'Number 2', 'Color: Silver'],
+  },
+  Leo: {
+    element: 'Fire',
+    ruling: 'Sun',
+    traits: ['Creative', 'Generous', 'Warm-hearted', 'Charismatic'],
+    lucky: ['Sunday', 'Number 1', 'Color: Gold'],
+  },
+  Virgo: {
+    element: 'Earth',
+    ruling: 'Mercury',
+    traits: ['Loyal', 'Analytical', 'Practical', 'Organized'],
+    lucky: ['Wednesday', 'Number 5', 'Color: Green'],
+  },
+  Libra: {
+    element: 'Air',
+    ruling: 'Venus',
+    traits: ['Diplomatic', 'Graceful', 'Fair-minded', 'Social'],
+    lucky: ['Friday', 'Number 6', 'Color: Pink'],
+  },
+  Scorpio: {
+    element: 'Water',
+    ruling: 'Pluto',
+    traits: ['Determined', 'Secretive', 'Passionate', 'Resourceful'],
+    lucky: ['Tuesday', 'Number 8', 'Color: Dark Red'],
+  },
+  Sagittarius: {
+    element: 'Fire',
+    ruling: 'Jupiter',
+    traits: ['Optimistic', 'Freedom-loving', 'Honest', 'Philosophical'],
+    lucky: ['Thursday', 'Number 3', 'Color: Purple'],
+  },
+}
 
+function getZodiacSign(month, day) {
   for (const sign of ZODIAC_SIGNS) {
-    let isInRange = false
+    const [startMonth, startDay] = sign.dates.split(' - ')[0].split(' ').map(Number)
+    const [endMonth, endDay] = sign.dates.split(' - ')[1].split(' ').map(Number)
 
-    if (sign.startMonth === sign.endMonth) {
-      isInRange = month === sign.startMonth && day >= sign.startDay && day <= sign.endDay
-    } else if (sign.startMonth < sign.endMonth) {
-      isInRange =
-        (month === sign.startMonth && day >= sign.startDay) ||
-        (month === sign.endMonth && day <= sign.endDay) ||
-        (month > sign.startMonth && month < sign.endMonth)
-    } else {
-      isInRange =
-        (month === sign.startMonth && day >= sign.startDay) ||
-        (month === sign.endMonth && day <= sign.endDay) ||
-        month > sign.startMonth ||
-        month < sign.endMonth
-    }
-
-    if (isInRange) {
-      return sign
-    }
+    if (month === startMonth && day >= startDay) return sign
+    if (month === endMonth && day <= endDay) return sign
   }
-
   return null
 }
 
-export default function Home() {
+export default function ZodiacApp() {
   const [birthDate, setBirthDate] = useState('')
   const [zodiacSign, setZodiacSign] = useState(null)
-  const [error, setError] = useState('')
 
   const handleDateChange = (e) => {
     const date = e.target.value
     setBirthDate(date)
-    setError('')
 
     if (date) {
-      const selectedDate = new Date(date)
-      const today = new Date()
-
-      if (selectedDate > today) {
-        setError('Birth date cannot be in the future')
-        setZodiacSign(null)
-        return
-      }
-
-      const sign = getZodiacSign(selectedDate)
+      const [year, month, day] = date.split('-').map(Number)
+      const sign = getZodiacSign(month, day)
       setZodiacSign(sign)
     } else {
       setZodiacSign(null)
     }
   }
 
+  const traits = zodiacSign ? ZODIAC_TRAITS[zodiacSign.name] : null
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
-        <div className="bg-white rounded-lg shadow-2xl p-8">
-          <h1 className="text-4xl font-bold text-center text-gray-800 mb-2">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 p-4">
+      <div className="max-w-2xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 mb-2">
             ✨ Zodiac Sign Predictor ✨
           </h1>
-          <p className="text-center text-gray-600 mb-8">
-            Discover your zodiac sign and cosmic traits
-          </p>
-
-          <div className="mb-6">
-            <label className="block text-gray-700 font-semibold mb-2">
-              Enter Your Birth Date
-            </label>
-            <input
-              type="date"
-              value={birthDate}
-              onChange={handleDateChange}
-              className="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-purple-500 transition"
-            />
-          </div>
-
-          {error && (
-            <div className="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
-              {error}
-            </div>
-          )}
-
-          {zodiacSign && (
-            <div
-              className="mt-8 p-6 rounded-lg text-white transition-all duration-300"
-              style={{ backgroundColor: zodiacSign.color }}
-            >
-              <div className="text-center">
-                <div className="text-6xl mb-3">{zodiacSign.symbol}</div>
-                <h2 className="text-3xl font-bold mb-1">{zodiacSign.name}</h2>
-                <p className="text-sm opacity-90 mb-4">{zodiacSign.dateRange}</p>
-              </div>
-
-              <div className="mt-6 space-y-4">
-                <div>
-                  <p className="font-semibold mb-1">Traits</p>
-                  <p className="text-sm opacity-95">{zodiacSign.description}</p>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <p className="font-semibold text-sm">Element</p>
-                    <p className="text-sm opacity-95">{zodiacSign.element}</p>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-sm">Date Range</p>
-                    <p className="text-sm opacity-95">{zodiacSign.dateRange}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {!zodiacSign && !error && (
-            <div className="mt-8 p-6 bg-gray-100 rounded-lg text-center text-gray-500">
-              <p>Select your birth date to reveal your zodiac sign</p>
-            </div>
-          )}
-
-          <div className="mt-8 grid grid-cols-4 gap-2">
-            {ZODIAC_SIGNS.map((sign) => (
-              <div
-                key={sign.name}
-                className="text-center p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition cursor-pointer"
-                title={sign.name}
-              >
-                <div className="text-2xl">{sign.symbol}</div>
-                <p className="text-xs text-gray-600 mt-1">{sign.name.slice(0, 3)}</p>
-              </div>
-            ))}
-          </div>
+          <p className="text-gray-300 text-lg">Discover your cosmic identity</p>
         </div>
 
-        <p className="text-center text-white text-sm mt-6 opacity-75">
-          Built with Next.js & Tailwind CSS
-        </p>
+        {/* Input Section */}
+        <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-8 border border-purple-300 border-opacity-20 mb-8">
+          <label className="block text-white text-lg font-semibold mb-4">
+            Enter Your Birth Date:
+          </label>
+          <input
+            type="date"
+            value={birthDate}
+            onChange={handleDateChange}
+            className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-90 text-gray-900 font-semibold text-lg focus:outline-none focus:ring-2 focus:ring-purple-400"
+          />
+        </div>
+
+        {/* Results Section */}
+        {zodiacSign && traits && (
+          <div className="space-y-6 animate-fadeIn">
+            {/* Main Card */}
+            <div className={`bg-gradient-to-br ${zodiacSign.color} rounded-lg p-8 text-white shadow-2xl`}>
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-4xl font-bold">{zodiacSign.name}</h2>
+                <span className="text-6xl">{zodiacSign.emoji}</span>
+              </div>
+              <p className="text-lg opacity-90">{zodiacSign.dates}</p>
+            </div>
+
+            {/* Traits Card */}
+            <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-8 border border-purple-300 border-opacity-20">
+              <h3 className="text-2xl font-bold text-white mb-4">Characteristics</h3>
+              <div className="grid grid-cols-2 gap-4 mb-6">
+                {traits.traits.map((trait, idx) => (
+                  <div key={idx} className="bg-purple-500 bg-opacity-30 rounded-lg p-3 text-white">
+                    ✓ {trait}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Details Card */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-6 border border-purple-300 border-opacity-20">
+                <h4 className="text-white font-bold text-lg mb-2">Element</h4>
+                <p className="text-2xl font-bold text-purple-300">{traits.element}</p>
+              </div>
+              <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-6 border border-purple-300 border-opacity-20">
+                <h4 className="text-white font-bold text-lg mb-2">Ruling Planet</h4>
+                <p className="text-2xl font-bold text-purple-300">{traits.ruling}</p>
+              </div>
+            </div>
+
+            {/* Lucky Info */}
+            <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-8 border border-purple-300 border-opacity-20">
+              <h3 className="text-2xl font-bold text-white mb-4">Lucky Attributes</h3>
+              <div className="space-y-3">
+                {traits.lucky.map((item, idx) => (
+                  <div key={idx} className="text-white text-lg">
+                    ⭐ {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Age Info */}
+            <div className="bg-gradient-to-r from-pink-500 to-purple-500 rounded-lg p-6 text-white text-center">
+              <p className="text-lg font-semibold">
+                Born on {new Date(birthDate).toLocaleDateString('en-US', {
+                  weekday: 'long',
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })}
+              </p>
+              <p className="text-sm opacity-80 mt-2">
+                Age: {new Date().getFullYear() - new Date(birthDate).getFullYear()} years
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* Empty State */}
+        {!zodiacSign && (
+          <div className="bg-white bg-opacity-10 backdrop-blur-md rounded-lg p-12 border border-purple-300 border-opacity-20 text-center">
+            <p className="text-gray-300 text-xl">👆 Select your birth date to discover your zodiac sign</p>
+          </div>
+        )}
+
+        {/* Footer */}
+        <div className="text-center mt-12 text-gray-400 text-sm">
+          <p>🌙 Explore the mysteries of the cosmos 🌟</p>
+        </div>
       </div>
     </div>
   )
